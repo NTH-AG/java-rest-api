@@ -216,7 +216,7 @@ public class MessageBirdServiceImpl implements MessageBirdService {
         final String body = apiResponse.getBody();
         final int status = apiResponse.getStatus();
 
-        if (status == HttpURLConnection.HTTP_OK || status == HttpURLConnection.HTTP_CREATED) {
+        if (status == HttpURLConnection.HTTP_OK || status == HttpURLConnection.HTTP_CREATED || status == HttpURLConnection.HTTP_ACCEPTED) {
             final ObjectMapper mapper = new ObjectMapper();
 
             // If we as new properties, we don't want the system to fail, we rather want to ignore them
@@ -237,7 +237,7 @@ public class MessageBirdServiceImpl implements MessageBirdService {
         return null;
     }
 
-    private void handleHttpFailStatuses(final int status, String body) throws UnauthorizedException, NotFoundException, GeneralException {
+    protected void handleHttpFailStatuses(final int status, String body) throws UnauthorizedException, NotFoundException, GeneralException {
         if (status == HttpURLConnection.HTTP_UNAUTHORIZED) {
             final List<ErrorReport> errorReport = getErrorReportOrNull(body);
             throw new UnauthorizedException(NOT_AUTHORISED_MSG, errorReport);
@@ -260,7 +260,7 @@ public class MessageBirdServiceImpl implements MessageBirdService {
      * @param <P>     Type of the payload.
      * @return APIResponse containing the response's body and status.
      */
-    <P> APIResponse doRequest(final String method, final String url, final P payload) throws GeneralException {
+    protected <P> APIResponse doRequest(final String method, final String url, final P payload) throws GeneralException {
         HttpURLConnection connection = null;
         InputStream inputStream = null;
 
@@ -303,7 +303,7 @@ public class MessageBirdServiceImpl implements MessageBirdService {
      * @param filePath the path where the downloaded file is going to be stored.
      * @return if it succeed, it returns filepath otherwise null or exception.
      */
-    private String doGetRequestForFileAndStore(final String url, final String filePath) throws GeneralException, UnauthorizedException, NotFoundException {
+    protected String doGetRequestForFileAndStore(final String url, final String filePath) throws GeneralException, UnauthorizedException, NotFoundException {
         HttpURLConnection connection = null;
         InputStream inputStream = null;
 
@@ -418,7 +418,7 @@ public class MessageBirdServiceImpl implements MessageBirdService {
      * @param inputStream Stream to read from.
      * @return UTF-8 encoded string representation of stream's contents.
      */
-    private String readToEnd(InputStream inputStream) {
+    protected String readToEnd(InputStream inputStream) {
         Scanner scanner = new Scanner(inputStream).useDelimiter("\\A");
 
         return scanner.hasNext() ? scanner.next() : "";

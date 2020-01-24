@@ -17,7 +17,7 @@ public class ConversationHsmLocalizableParameter {
     private ConversationHsmLocalizableParameterCurrency currency;
     private Date dateTime;
 
-    private ConversationHsmLocalizableParameter() {
+    public ConversationHsmLocalizableParameter() {
         // Jackson requires an empty constructor for instantiation.
     }
 

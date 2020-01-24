@@ -18,7 +18,7 @@ public class APIResponse {
     private final String body;
     private final int status;
 
-    APIResponse(final String body, final int status) {
+    public APIResponse(final String body, final int status) {
         this.body = body;
         this.status = status;
     }
@@ -27,7 +27,7 @@ public class APIResponse {
      * Initializes an APIResponse object and sets the HTTP status code to 200.
      * @param body response body
      */
-    APIResponse(final String body) {
+    public APIResponse(final String body) {
         this(body, STATUS_OK);
     }
 
@@ -38,7 +38,7 @@ public class APIResponse {
      *
      * @return True if the status indicates success.
      */
-     static boolean isSuccessStatus(final int status) {
+     public static boolean isSuccessStatus(final int status) {
         return status >= STATUS_RANGE_SUCCESS_START
                 && status <= STATUS_RANGE_SUCCESS_END;
     }

@@ -4,6 +4,7 @@ public class MessageReference {
 
     private String href;
     private int totalCount;
+    private String lastMessageId;
 
     public String getHREF() {
         return href;
@@ -21,11 +22,20 @@ public class MessageReference {
         this.totalCount = totalCount;
     }
 
+    public String getLastMessageId() {
+        return lastMessageId;
+    }
+
+    public void setLastMessageId(String lastMessageId) {
+        this.lastMessageId = lastMessageId;
+    }
+
     @Override
     public String toString() {
         return "MessageReference{" +
                 "href='" + href + '\'' +
                 ", totalCount=" + totalCount +
+                ", lastMessageId=" + lastMessageId +
                 '}';
     }
 }
