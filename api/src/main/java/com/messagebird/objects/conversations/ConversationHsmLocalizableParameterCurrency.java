@@ -15,7 +15,7 @@ public class ConversationHsmLocalizableParameterCurrency {
      * @param amount Amount multiplied by 1000. E.g. 12.34 becomes 12340.
      */
     public ConversationHsmLocalizableParameterCurrency(final String code, final int amount) {
-        this.currencyCode = currencyCode;
+        this.currencyCode = code;
         this.amount = amount;
     }
 
