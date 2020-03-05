@@ -15,6 +15,7 @@ public enum ConversationMessageStatus {
     READ("read"),
     RECEIVED("received"),
     SENT("sent"),
+    REJECTED("rejected"),
     UNSUPPORTED("unsupported");
 
     private final String status;

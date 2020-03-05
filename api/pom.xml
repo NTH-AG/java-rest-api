@@ -120,9 +120,14 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <uniqueVersion>false</uniqueVersion>
+            <id>deployment</id>
+            <url>http://dev1-git1.int.ch:8675/nexus/content/repositories/snapshot-policy</url>
         </snapshotRepository>
+        <repository>
+            <id>deployment</id>
+            <url>http://dev1-git1.int.ch:8675/nexus/content/repositories/releases</url>
+        </repository>
     </distributionManagement>
 
     <build>
